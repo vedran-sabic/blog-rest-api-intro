@@ -1,14 +1,3 @@
-/**
- Challenge:
-
- Style it up!
- 
- * Add a short (~30px height) fixed navbar at the top with the text "BlogSpace". Remember to pad the top of your content so it doesn't get hidden behind the navbar.
- * Add a font from Google Fonts.
- * Any other styling you want to make it look nice!
- 
- */
-
 fetch("https://jsonplaceholder.typicode.com/posts")
   .then((res) => res.json())
   .then((data) => {
@@ -23,3 +12,24 @@ fetch("https://jsonplaceholder.typicode.com/posts")
     }
     document.getElementById("blog-list").innerHTML = html;
   });
+
+/**
+ Challenge:
+ 
+ * Listen for the "submit" event on the form (which will happen when the button is clicked)
+    * (Don't forget to preventDefault on the form so it doesn't refresh your page. Google "form preventDefault" if you're not sure what I'm talking about)
+ * Combine the title value and body value into an object (with a "title" property and "body" property)
+ * Log the object to the console
+
+*/
+
+document.getElementById("new-post").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const postTitle = document.getElementById("post-title").value;
+  const postBody = document.getElementById("post-body").value;
+  const data = {
+    title: postTitle,
+    body: postBody,
+  };
+  console.log(data);
+});
