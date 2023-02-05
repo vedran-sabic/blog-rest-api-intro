@@ -13,16 +13,6 @@ fetch("https://jsonplaceholder.typicode.com/posts")
     document.getElementById("blog-list").innerHTML = html;
   });
 
-/**
- Challenge:
- 
- * Listen for the "submit" event on the form (which will happen when the button is clicked)
-    * (Don't forget to preventDefault on the form so it doesn't refresh your page. Google "form preventDefault" if you're not sure what I'm talking about)
- * Combine the title value and body value into an object (with a "title" property and "body" property)
- * Log the object to the console
-
-*/
-
 document.getElementById("new-post").addEventListener("submit", function (e) {
   e.preventDefault();
   const postTitle = document.getElementById("post-title").value;
@@ -31,5 +21,25 @@ document.getElementById("new-post").addEventListener("submit", function (e) {
     title: postTitle,
     body: postBody,
   };
-  console.log(data);
+  /**
+   * Challenge: Send this off to the server!
+   *
+   * 1. BaseURL: https://apis.scrimba.com/jsonplaceholder/
+   * 2. Endpoint: /posts
+   * 3. method: ???
+   * 4. Request body: ??? (Remember to turn it into JSON)
+   * 5. Headers: ??? (Check the JSON Placeholder API docs or past casts for help)
+   */
+
+  const options = {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  fetch("https://jsonplaceholder.typicode.com/posts", options)
+    .then((res) => res.json())
+    .then((data) => console.log(data));
 });
